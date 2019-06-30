@@ -67,23 +67,23 @@ class APIClient {
     final headers =  {'Content-Type': 'application/json'};
 
     final Response response = await httpClient.post(url, headers: headers, body: body);
-    final results = json.decode(response.body);
+    final postResults = json.decode(response.body);
 
     if (response.statusCode == 200) {
-      return BoxModel.fromJson(results);
+      return BoxModel.fromJson(postResults);
     } else {
-      throw ModelError.fromJson(results);
+      throw ModelError.fromJson(postResults);
     }
   }
 
   Future<List<BoxModel>> _listBoxes() async {
-    final Response response = await httpClient.get(Uri.parse("${baseUrl}/$boxes"));
+    final Response response = await httpClient.get(Uri.parse("$baseUrl/boxes"));
     final results = json.decode(response.body);
 
     if (response.statusCode == 200) {
       return BoxModel.fromJsonArray(results);
     } else {
-      throw ModelError.fromJsonError(results);
+      throw ModelError.fromJson(results);
     }
   }
 
