@@ -11,6 +11,17 @@ class BoxModel extends Model{
   BoxModel({this.id, this.name, this.description, this.pictureUrl, this.file});
 
   @override
+  String toString() {
+    return """ 
+      id: $id,
+      name: $name,
+      description: $description,
+      pictureUrl: $pictureUrl
+      file: ${file.toString()}
+      """;
+  }
+
+  @override
   static BoxModel fromJson(dynamic json) {
     return BoxModel(
       id: json['id'] as int,

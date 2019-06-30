@@ -6,4 +6,13 @@ class UploadFileModel {
   final String subtype;
 
   UploadFileModel(this.file, this.type, this.subtype);
+
+    @override
+  String toString() {
+    return """ 
+      type: $type,
+      subtype: $subtype,
+      file: [object]  or null
+      """;
+  }
 }
